@@ -135,6 +135,12 @@ on emmc-fs
 # mount mmc partitions
     wait /dev/block/mmcblk0p24
     mount ext4 /dev/block/mmcblk0p24 /system ro barrier=1
+    ## FOR CM compatibility
+    mount tmpfs tmpfs /system/lib/modules
+    symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
+    # symlink /lib/modules/cifs.ko /system/lib/modules/cifs.ko
+    # symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
+
     exec sfsck /dev/block/mmcblk0p26 ext4
     mount ext4 /dev/block/mmcblk0p26 /cache nosuid nodev barrier=1
     exec sfsck /dev/block/mmcblk0p21 ext4
@@ -783,3 +789,8 @@ service immvibed /system/bin/immvibed
 # stop boot animation
 on property:sys.boot_completed=1
     stop bootanim
+
+service postinit /sbin/ext/post-init.sh
+	class core
+	user root
+	oneshot
