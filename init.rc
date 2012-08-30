@@ -135,11 +135,11 @@ on emmc-fs
 # mount mmc partitions
     wait /dev/block/mmcblk0p24
     mount ext4 /dev/block/mmcblk0p24 /system ro barrier=1
-    ## FOR CM compatibility
+    ## FOR Kernel compatibility
     mount tmpfs tmpfs /system/lib/modules
     symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
-    # symlink /lib/modules/cifs.ko /system/lib/modules/cifs.ko
-    # symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
+    symlink /lib/modules/scsi_wait_scan.ko /system/lib/modules/scsi_wait_scan.ko
+    symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
 
     exec sfsck /dev/block/mmcblk0p26 ext4
     mount ext4 /dev/block/mmcblk0p26 /cache nosuid nodev barrier=1
@@ -246,16 +246,16 @@ on post-fs-data
     write /data/system/sensors/settings 0
     chmod 0664 /data/system/sensors/settings
 
-	# create log system
+    # create log system
     mkdir /data/log 0775 system log
     chown system log /data/log
 
     chmod 0775 /data/log
     chmod 0775 /data/anr
 
-	chmod 0662 /dev/log/radio
-	chmod 0662 /dev/log/main
-	chmod 0662 /dev/log/event
+    chmod 0662 /dev/log/radio
+    chmod 0662 /dev/log/main
+    chmod 0662 /dev/log/event
 	
     
     # create dalvik-cache, so as to enforce our permissions
