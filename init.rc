@@ -134,7 +134,7 @@ on fs
 on emmc-fs
 # mount mmc partitions
     wait /dev/block/mmcblk0p24
-    mount ext4 /dev/block/mmcblk0p24 /system ro barrier=1
+    mount ext4 /dev/block/mmcblk0p24 /system rw barrier=1
     ## FOR Kernel compatibility
     mount tmpfs tmpfs /system/lib/modules
     symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
@@ -142,7 +142,7 @@ on emmc-fs
     symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
 
     exec sfsck /dev/block/mmcblk0p26 ext4
-    mount ext4 /dev/block/mmcblk0p26 /cache nosuid nodev barrier=1
+    mount ext4 /dev/block/mmcblk0p26 /cache nosuid nodev rw barrier=1
     exec sfsck /dev/block/mmcblk0p21 ext4
     mount ext4 /dev/block/mmcblk0p21 /efs nosuid nodev barrier=1
     chown radio system /efs

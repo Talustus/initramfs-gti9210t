@@ -11,6 +11,7 @@ exec >>/data/.dream/post-init.log 2>&1
 
 # Set Custom Kernel properties
 /sbin/busybox sh /sbin/ext/properties.sh
+sleep 1
 
 # install Kernel related Apps etc
 /sbin/busybox sh /sbin/ext/install.sh

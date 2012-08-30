@@ -4,8 +4,8 @@
 # rewritten to fit our needs by Talustus
 
 # Remount FileSys RW
+/sbin/busybox mount -t ext4 -o remount,rw /system
 /sbin/busybox mount -t rootfs -o remount,rw rootfs
-/sbin/busybox mount -o remount,rw /system
 
 cd /
 
@@ -33,7 +33,7 @@ else
   xzcat /res/misc/payload/Superuser.apk.xz > /system/app/Superuser.apk
   chown 0.0 /system/app/Superuser.apk
   chmod 644 /system/app/Superuser.apk
-fi
+fi;
 
 echo "Checking if cwmanager is installed"
 if [ ! -f /system/.dream/cwmmanager3-installed ];
@@ -52,6 +52,5 @@ fi
 # rm -rf /res/misc/payload
 
 # Remount FileSys RO
-/sbin/busybox mount -o remount,ro /system
+/sbin/busybox mount -t ext4 -o remount,ro /system
 /sbin/busybox mount -t rootfs -o remount,ro rootfs
-
