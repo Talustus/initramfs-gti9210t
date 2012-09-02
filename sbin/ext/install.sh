@@ -2,12 +2,11 @@
 # DreamKernel v1.x installer
 # Script original written by gokhanmoral
 # rewritten to fit our needs by Talustus
+cd /
 
 # Remount FileSys RW
-/sbin/busybox mount -t ext4 -o remount,rw /system
 /sbin/busybox mount -t rootfs -o remount,rw rootfs
-
-cd /
+/sbin/busybox mount -t ext4 -o remount,rw /system
 
 if [ -s /system/xbin/su ];
 then
@@ -47,7 +46,7 @@ then
   mkdir /system/.dream
   chmod 755 /system/.dream
   echo 1 > /system/.dream/cwmmanager3-installed
-fi
+fi;
 
 # rm -rf /res/misc/payload
 

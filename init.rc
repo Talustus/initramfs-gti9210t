@@ -182,6 +182,7 @@ on post-fs
     chmod 0770 /cache
 
     # This may have been created by the recovery system with odd permissions
+    mkdir /cache/recovery
     chown system cache /cache/recovery
     chmod 0770 /cache/recovery
 
@@ -248,7 +249,9 @@ on post-fs-data
 
     # create log system
     mkdir /data/log 0775 system log
+    mkdir /data/anr 0775 system log
     chown system log /data/log
+    chown system log /data/anr
 
     chmod 0775 /data/log
     chmod 0775 /data/anr
