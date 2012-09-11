@@ -6,7 +6,7 @@ cd /
 
 # Remount FileSys RW
 /sbin/busybox mount -t rootfs -o remount,rw rootfs
-/sbin/busybox mount -t ext4 -o remount,rw /system
+/sbin/busybox mount -o remount,rw /system
 
 if [ -s /system/xbin/su ];
 then
@@ -51,5 +51,5 @@ fi;
 # rm -rf /res/misc/payload
 
 # Remount FileSys RO
-/sbin/busybox mount -t ext4 -o remount,ro /system
+/sbin/busybox mount -o remount,ro /system
 /sbin/busybox mount -t rootfs -o remount,ro rootfs

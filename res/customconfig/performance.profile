@@ -1,1 +1,0 @@
-scaling_governor=ondemand

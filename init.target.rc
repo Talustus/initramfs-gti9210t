@@ -33,29 +33,51 @@ on boot
     chmod 664	/dev/akm8975
     chown system system /sys/class/K3G_GYRO-dev/k3g/gyro_selftest_dps
     chown system system /sys/class/sec/gsensorcal/calibration
+    chown system system /sys/class/proximity/proximity/proximity_avg
+    chown system system /sys/devices/virtual/K3G_GYRO-dev/k3g/gyro_selftest
+    chown system system /sys/devices/virtual/K3G_GYRO-dev/k3g/gyro_get_temp
+    chown system system /sys/devices/virtual/K3G_GYRO-dev/k3g/gyro_power_on
+    chown system system /sys/devices/virtual/K3G_GYRO-dev/k3g/gyro_selftest_dps
+    chown system system /sys/devices/virtual/accelerometer/accelerometer/acc_file
+    chown system system /sys/devices/virtual/sec/gsensorcal/calibration
+    chown system system /sys/class/sensors/barometer_sensor/sea_level_pressure
+    chown system system /sys/class/sensors/barometer_sensor/eeprom_check
 
-# ko files for vibrator (block this cmd temporary. vibrato driver cause reset during boot)
-    insmod /system/lib/modules/vibrator.ko
-    chown system system /sys/class/timed_output/vibrator/enable
-    chmod 0664 /sys/class/timed_output/vibrator/enable    
+    #bln
+    chown system system /sys/class/misc/backlightnotification/notification_led
+    chown system system /sys/class/misc/backlightnotification/enabled
 
-# on emmc mount the partition containing firmware
+    #camera
+    chown system camera /sys/class/ledflash/sec_ledflash/torch  
+
+    # on emmc mount the partition containing firmware
 on emmc-fs
     mount ext3 /dev/block/mmcblk0p24 /system remount rw
+    ## FOR Kernel compatibility
+    mount tmpfs tmpfs /system/lib/modules
+    symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
+    symlink /lib/modules/scsi_wait_scan.ko /system/lib/modules/scsi_wait_scan.ko
+    symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
+
     mkdir /system/etc/firmware/misc 0771 system system
     mkdir /system/etc/firmware/misc_mdm 0771 system system
+
     exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
     mount ext4 /dev/block/mmcblk0p24 /system remount ro barrier=0
     mkdir /tombstones 0771 system system
     mount ext4 /dev/block/mmcblk0p27 /tombstones nosuid nodev barrier=1
 
-
+    # ko files for vibrator (block this cmd temporary. vibrato driver cause reset during boot)
+    insmod /system/lib/modules/vibrator.ko
+    chown system system /sys/class/timed_output/vibrator/enable
+    chmod 0664 /sys/class/timed_output/vibrator/enable  
     write /sys/devices/i2c-0/0-0024/cyttsp_update_fw 1
+
 service kickstart /system/bin/qcks l
     oneshot
     disabled
 
-# Start kickstart if csfb or svlte2a target
+    # Start kickstart if csfb or svlte2a target
 on property:ro.baseband=csfb
     wait /dev/ttyHSL1
     mkdir /data/qcks 0770 system system
@@ -101,4 +123,4 @@ on property:sys.radio.shutdown=true
 service TvoutService_C /system/bin/bintvoutservice
      class main
      user system
-     group graphics	
+     group graphics
