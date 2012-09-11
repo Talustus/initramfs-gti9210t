@@ -134,7 +134,7 @@ on fs
 on emmc-fs
 # mount mmc partitions
     wait /dev/block/mmcblk0p24
-    mount ext4 /dev/block/mmcblk0p24 /system rw barrier=1
+    mount ext4 /dev/block/mmcblk0p24 /system noatime
     ## FOR Kernel compatibility
     mount tmpfs tmpfs /system/lib/modules
     symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
@@ -688,9 +688,9 @@ service media /system/bin/mediaserver
     ioprio rt 4
 
 #init.d support     
-service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
-     user root
-     oneshot
+#service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
+#     user root
+#     oneshot
 
 service bootanim /system/bin/bootanimation
     class main
