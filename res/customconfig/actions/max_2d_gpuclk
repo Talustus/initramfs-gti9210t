@@ -1,0 +1,11 @@
+#!sbin/busybox sh
+#
+
+if [ "a${2}" == "a" ]; then
+  echo "${max_2d_gpuclk}"
+else
+  max_2d_gpuclk="${2}"
+  echo ${max_2d_gpuclk} > /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/max_gpuclk
+  echo ${max_2d_gpuclk} > /sys/devices/platform/kgsl-2d1.1/kgsl/kgsl-2d1/max_gpuclk 
+  echo "${max_2d_gpuclk}"
+fi;

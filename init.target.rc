@@ -50,15 +50,10 @@ on boot
     #camera
     chown system camera /sys/class/ledflash/sec_ledflash/torch  
 
-    # on emmc mount the partition containing firmware
-on emmc-fs
-    mount ext3 /dev/block/mmcblk0p24 /system remount rw
-    ## FOR Kernel compatibility
-    mount tmpfs tmpfs /system/lib/modules
-    symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
-    symlink /lib/modules/scsi_wait_scan.ko /system/lib/modules/scsi_wait_scan.ko
-    symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
 
+on emmc-fs
+    mount ext4 /dev/block/mmcblk0p24 /system remount rw
+    # on emmc mount the partition containing firmware
     mkdir /system/etc/firmware/misc 0771 system system
     mkdir /system/etc/firmware/misc_mdm 0771 system system
 
@@ -99,9 +94,9 @@ service dcvsd1 /system/bin/dcvsd -c 1 -f /data/misc/dcvsd/dcvsd1.conf
     user root
     disabled
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
-    user root
-    disabled
+#service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+#    user root
+#    disabled
 
 #service thermald /system/bin/thermald
 #    class main

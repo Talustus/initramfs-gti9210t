@@ -34,9 +34,9 @@ service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
     oneshot
 
 on boot
-    write /sys/class/android_usb/android0/iManufacturer $ro.manufacturer
-    write /sys/class/android_usb/android0/iProduct $ro.model
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    write /sys/class/android_usb/android0/iManufacturer ${ro.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.model}
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/f_mass_storage/inquiry_string "Samsung"
     write /sys/class/android_usb/f_mass_storage/vendor_string "SAMSUNG"
     write /sys/class/android_usb/f_mass_storage/product_string "GT-I9210T"
