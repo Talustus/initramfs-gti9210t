@@ -1,4 +1,4 @@
-scaling_governor=powersave
+scaling_governor=conservative
 scaling_min_freq=192000
 scaling_max_freq=1026000
 max_3d_gpuclk=200000000

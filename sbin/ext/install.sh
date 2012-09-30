@@ -52,4 +52,3 @@ fi;
 
 # Remount FileSys RO
 /sbin/busybox mount -o remount,ro /system
-/sbin/busybox mount -t rootfs -o remount,ro rootfs

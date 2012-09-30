@@ -43,11 +43,11 @@ on boot
     chown system system /sys/class/sensors/barometer_sensor/sea_level_pressure
     chown system system /sys/class/sensors/barometer_sensor/eeprom_check
 
-    #bln
+    # bln
     chown system system /sys/class/misc/backlightnotification/notification_led
     chown system system /sys/class/misc/backlightnotification/enabled
 
-    #camera
+    # camera
     chown system camera /sys/class/ledflash/sec_ledflash/torch  
 
 
