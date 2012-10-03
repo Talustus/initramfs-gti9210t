@@ -66,6 +66,12 @@
 	</spinner>
     </settingsPane>
   </settingsTab>
+  <settingsTab name="BLN">
+    <settingsPane description="BackLightNotification and Touchkey related Settings" name="BackLightNotification">
+       <seekBar description="Controls touchpad LED voltage level (default: 3000 min:2500 max: 3300)" 
+		name="Led Voltage Level" action="generic /sys/devices/virtual/sec/sec_touchkey/touchkey_brightness" unit=" mV" min="2500" reversed="false" step="50" max="3300"/>
+    </settingsPane>
+  </settingsTab>
   <settingsTab name="Misc">
     <settingsPane description="Misc Settings" name="Misc Settings">
 	<spinner description="This will set the default I/O scheduler. Default I/O scheduler will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default I/O Scheduler" action="generic /sys/block/mmcblk0/queue/scheduler">
