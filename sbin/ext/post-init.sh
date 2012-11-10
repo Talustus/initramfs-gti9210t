@@ -38,7 +38,7 @@ read_config
 # chown root system /sys/devices/system/cpu/cpu0/
 # chown root system /sys/devices/system/cpu/cpu1/
 # chmod 0755 /sys/devices/system/cpu/cpu0/
-# chmod 0755 /sys/devices/system/cpu/cpu1/
+chmod 0755 /sys/devices/system/cpu/cpu1/
 
 
 ## Make uci.sh executable and apply ExTweaks Settings

@@ -3,7 +3,7 @@ on early-init
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
 
-# for backwards compatibility
+    # for backwards compatibility
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard0 /sdcard
     symlink  /storage/sdcard1 /external_sd
@@ -14,7 +14,7 @@ on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-# Vibetonz
+    # Vibetonz
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
 
@@ -35,7 +35,7 @@ on emmc-fs
     mount_all /fstab.qcom
     ## FOR Kernel compatibility
     ## We need to make sure we are going to load the propper modules
-    ## otherwhise the Kernel will refuse to load them 
+    ## otherwhise the Kernel will refuse to load them
     ## wich will simply result in not working features
     mount tmpfs tmpfs /system/lib/modules
     symlink /lib/modules/msm-buspm-dev.ko /system/lib/msm-buspm-dev.ko

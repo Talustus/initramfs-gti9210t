@@ -8,7 +8,7 @@ cd /
 /sbin/busybox mount -t rootfs -o remount,rw rootfs
 /sbin/busybox mount -o remount,rw /system
 
-if [ -s /system/xbin/su ];
+if [ -f /system/xbin/su ];
 then
   echo "Superuser already exists"
 else
@@ -34,19 +34,19 @@ else
   chmod 644 /system/app/Superuser.apk
 fi;
 
-echo "Checking if cwmanager is installed"
-if [ ! -f /system/.dream/cwmmanager3-installed ];
-then
-  rm /system/app/CWMManager.apk
-  rm /data/dalvik-cache/*CWMManager.apk*
-  rm /data/app/eu.chainfire.cfroot.cwmmanager*.apk
-  xzcat /res/misc/payload/CWMManager.apk.xz > /system/app/CWMManager.apk
-  chown 0.0 /system/app/CWMManager.apk
-  chmod 644 /system/app/CWMManager.apk
-  mkdir /system/.dream
-  chmod 755 /system/.dream
-  echo 1 > /system/.dream/cwmmanager3-installed
-fi;
+#echo "Checking if cwmanager is installed"
+#if [ ! -f /system/.dream/cwmmanager3-installed ];
+#then
+#  rm /system/app/CWMManager.apk
+#  rm /data/dalvik-cache/*CWMManager.apk*
+#  rm /data/app/eu.chainfire.cfroot.cwmmanager*.apk
+#  xzcat /res/misc/payload/CWMManager.apk.xz > /system/app/CWMManager.apk
+#  chown 0.0 /system/app/CWMManager.apk
+#  chmod 644 /system/app/CWMManager.apk
+#  mkdir /system/.dream
+#  chmod 755 /system/.dream
+#  echo 1 > /system/.dream/cwmmanager3-installed
+#fi;
 
 # rm -rf /res/misc/payload
 

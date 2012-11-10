@@ -48,24 +48,25 @@ on boot
     chown system system /sys/class/misc/backlightnotification/enabled
 
     # camera
-    chown system camera /sys/class/ledflash/sec_ledflash/torch  
+    chown system camera /sys/class/ledflash/sec_ledflash/torch
 
+    # ko files for vibrator (block this cmd temporary. vibrato driver cause reset during boot)
+    insmod /system/lib/modules/vibrator.ko
+    chown system system /sys/class/timed_output/vibrator/enable
+    chmod 0664 /sys/class/timed_output/vibrator/enable
 
+    # on emmc mount the partition containing firmware
 on emmc-fs
     mount ext4 /dev/block/mmcblk0p24 /system remount rw
     # on emmc mount the partition containing firmware
     mkdir /system/etc/firmware/misc 0771 system system
     mkdir /system/etc/firmware/misc_mdm 0771 system system
-
     exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
     mount ext4 /dev/block/mmcblk0p24 /system remount ro barrier=0
     mkdir /tombstones 0771 system system
     mount ext4 /dev/block/mmcblk0p27 /tombstones nosuid nodev barrier=1
 
-    # ko files for vibrator (block this cmd temporary. vibrato driver cause reset during boot)
-    insmod /system/lib/modules/vibrator.ko
-    chown system system /sys/class/timed_output/vibrator/enable
-    chmod 0664 /sys/class/timed_output/vibrator/enable  
+
     write /sys/devices/i2c-0/0-0024/cyttsp_update_fw 1
 
 service kickstart /system/bin/qcks l
@@ -94,7 +95,7 @@ service dcvsd1 /system/bin/dcvsd -c 1 -f /data/misc/dcvsd/dcvsd1.conf
     user root
     disabled
 
-#service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+# service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 #    user root
 #    disabled
 
@@ -103,8 +104,11 @@ service dcvsd1 /system/bin/dcvsd -c 1 -f /data/misc/dcvsd/dcvsd1.conf
 #    user root
 #    group root
 
+# qrngd will drop permissions after startup
 service qrngd /system/bin/qrngd -f
+    class main
     user root
+    group root
 
 on property:ro.baseband=svlte2a
    setprop ro.config.ehrpd true
