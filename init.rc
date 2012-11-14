@@ -135,10 +135,31 @@ on emmc-fs
 # mount mmc partitions
     wait /dev/block/mmcblk0p24
     mount ext4 /dev/block/mmcblk0p24 /system ro barrier=1
+    ## FOR Kernel compatibility
+    ## We need to make sure we are going to load the propper modules
+    ## otherwhise the Kernel will refuse to load them
+    ## wich will simply result in not working features
+    mount tmpfs tmpfs /system/lib/modules
+    symlink /lib/modules/msm-buspm-dev.ko /system/lib/msm-buspm-dev.ko
+    symlink /lib/modules/ansi_cprng.ko /system/lib/ansi_cprng.ko
+    symlink /lib/modules/qce.ko /system/lib/qce.ko
+    symlink /lib/modules/qcrypto.ko /system/lib/qcrypto.ko
+    symlink /lib/modules/qcedev.ko /system/lib/qcedev.ko
+    symlink /lib/modules/gspca_main.ko /system/lib/gspca_main.ko
+    symlink /lib/modules/scsi_wait_scan.ko /system/lib/modules/scsi_wait_scan.ko
+    symlink /lib/modules/lcd.ko /system/lib/lcd.ko
+    symlink /lib/modules/cls_flow.ko /system/lib/cls_flow.ko
+    symlink /lib/modules/spidev.ko /system/lib/spidev.ko
+    symlink /lib/modules/sch_dsmark.ko /system/lib/sch_dsmark.ko
+    symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
+    symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
+
     exec sfsck /dev/block/mmcblk0p26 ext4
     mount ext4 /dev/block/mmcblk0p26 /cache nosuid nodev barrier=1
+
     exec sfsck /dev/block/mmcblk0p21 ext4
     mount ext4 /dev/block/mmcblk0p21 /efs nosuid nodev barrier=1
+
     chown radio system /efs
     chmod 0771 /efs
     mkdir /efs/imei 0775

@@ -41,7 +41,7 @@ on boot
 
 # on emmc mount the partition containing firmware
 on emmc-fs
-    mount ext3 /dev/block/mmcblk0p24 /system remount rw
+    mount ext4 /dev/block/mmcblk0p24 /system remount rw
     mkdir /system/etc/firmware/misc 0771 system system
     wait /dev/block/mmcblk0p13
     mount vfat /dev/block/mmcblk0p13 /system/etc/firmware/misc ro shortname=lower
