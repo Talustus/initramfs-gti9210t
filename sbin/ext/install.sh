@@ -20,7 +20,7 @@ else
   xzcat /res/misc/payload/su.xz > /system/xbin/su
   chown 0.0 /system/xbin/su
   chmod 6755 /system/xbin/su
-
+  # SuperUser App
   rm -f /system/app/*uper?ser.apk
   rm -f /system/app/?uper?u.apk
   rm -f /system/app/*chainfire?supersu*.apk
@@ -33,20 +33,6 @@ else
   chown 0.0 /system/app/Superuser.apk
   chmod 644 /system/app/Superuser.apk
 fi;
-
-#echo "Checking if cwmanager is installed"
-#if [ ! -f /system/.dream/cwmmanager3-installed ];
-#then
-#  rm /system/app/CWMManager.apk
-#  rm /data/dalvik-cache/*CWMManager.apk*
-#  rm /data/app/eu.chainfire.cfroot.cwmmanager*.apk
-#  xzcat /res/misc/payload/CWMManager.apk.xz > /system/app/CWMManager.apk
-#  chown 0.0 /system/app/CWMManager.apk
-#  chmod 644 /system/app/CWMManager.apk
-#  mkdir /system/.dream
-#  chmod 755 /system/.dream
-#  echo 1 > /system/.dream/cwmmanager3-installed
-#fi;
 
 # rm -rf /res/misc/payload
 

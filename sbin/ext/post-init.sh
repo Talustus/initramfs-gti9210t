@@ -26,9 +26,6 @@ fi
 read_defaults
 read_config
 
-## Set Custom Kernel properties
-# /sbin/busybox sh /sbin/ext/properties.sh
-
 ## install Kernel related Apps etc
 /sbin/busybox sh /sbin/ext/install.sh
 
