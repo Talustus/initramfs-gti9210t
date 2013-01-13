@@ -17,7 +17,7 @@
 		<spinnerItem name="pegasusq" value="pegasusq"/>
 		<spinnerItem name="scary" value="scary"/>
 	</spinner>
-	<spinner description="This will set the MAX CPU Freq (1674000 Khz)" name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq">
+	<spinner description="This will set the MAX CPU Freq (1728000 Khz)" name="Scaling Max CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq">
 		<spinnerItem name="972 MHz" value="972000"/> 
 		<spinnerItem name="1026 MHz" value="1026000"/>
 		<spinnerItem name="1080 MHz" value="1080000"/> 
@@ -34,7 +34,7 @@
 		<spinnerItem name="1674 MHz" value="1674000"/>
 		<spinnerItem name="1728 MHz" value="1728000"/>
 	</spinner>
-	<spinner description="This will set the MIN CPU Freq (192000 Khz)" name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
+	<spinner description="This will set the MIN CPU Freq (192000 Khz)" name="Scaling Min CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
 		<spinnerItem name="192 MHz" value="192000"/> 
 		<spinnerItem name="384 MHz" value="384000"/>
 		<spinnerItem name="432 MHz" value="432000"/> 
@@ -68,7 +68,7 @@
   </settingsTab>
   <settingsTab name="BLN">
     <settingsPane description="BackLightNotification and Touchkey related Settings" name="BackLightNotification">
-       <seekBar description="Controls touchpad LED voltage level (default: 3000 min:2500 max: 3300)" 
+       <seekBar description="Controls touchpad LED voltage level (default: 3300 min:2500 max: 3300). You should not change this setting for now!"
 		name="Led Voltage Level" action="generic /sys/devices/virtual/sec/sec_touchkey/touchkey_brightness" unit=" mV" min="2500" reversed="false" step="50" max="3300"/>
     </settingsPane>
   </settingsTab>
