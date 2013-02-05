@@ -1,0 +1,10 @@
+#!/sbin/busybox sh
+#
+
+if [ "a${2}" == "a" ]; then
+  echo "${bln_enabled}"
+else
+  bln_enabled="${2}"
+  echo ${bln_enabled} > /sys/devices/virtual/misc/backlightnotification/enabled
+  echo "${bln_enabled}"
+fi;

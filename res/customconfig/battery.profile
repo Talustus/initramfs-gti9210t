@@ -4,4 +4,5 @@ scaling_max_freq=1026000
 max_3d_gpuclk=200000000
 max_2d_gpuclk=200000000
 scheduler=deadline
-touchkey_brightness=3300
+bln_enabled=0
+touchkey_brightness=33
