@@ -34,6 +34,32 @@ on early-init
 on fs
     mount_all fstab.qcom
 
+    # FOR Kernel compatibility
+    # We need to make sure we are going to load the propper modules
+    # otherwhise the Kernel will refuse to load them
+    # wich will simply result in not working features
+    mount tmpfs tmpfs /system/lib/modules
+    symlink /lib/modules/ansi_cprng.ko /system/lib/modules/ansi_cprng.ko
+    symlink /lib/modules/cls_flow.ko /system/lib/modules/cls_flow.ko
+    symlink /lib/modules/dal_remotetest.ko /system/lib/modules/dal_remotetest.ko
+    symlink /lib/modules/dhd.ko /system/lib/modules/dhd.ko
+    symlink /lib/modules/dma_test.ko /system/lib/modules/dma_test.ko
+    symlink /lib/modules/evbug.ko /system/lib/modules/evbug.ko
+    symlink /lib/modules/gspca_main.ko /system/lib/modules/gspca_main.ko
+    symlink /lib/modules/ksapi.ko /system/lib/modules/ksapi.ko
+    symlink /lib/modules/lcd.ko /system/lib/modules/lcd.ko
+    symlink /lib/modules/mmc_test.ko /system/lib/modules/mmc_test.ko
+    symlink /lib/modules/msm_tsif.ko /system/lib/modules/msm_tsif.ko
+    symlink /lib/modules/msm-buspm-dev.ko /system/lib/modules/msm-buspm-dev.ko
+    symlink /lib/modules/qce.ko /system/lib/modules/qce.ko
+    symlink /lib/modules/qcedev.ko /system/lib/modules/qcedev.ko
+    symlink /lib/modules/qcrypto.ko /system/lib/modules/qcrypto.ko
+    symlink /lib/modules/sch_dsmark.ko /system/lib/modules/sch_dsmark.ko
+    symlink /lib/modules/scsi_wait_scan.ko /system/lib/modules/scsi_wait_scan.ko
+    symlink /lib/modules/spidev.ko /system/lib/modules/spidev.ko
+    symlink /lib/modules/tsif_chrdev.ko /system/lib/modules/tsif_chrdev.ko
+    symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
+
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
