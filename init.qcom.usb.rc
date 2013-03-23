@@ -50,7 +50,7 @@ on property:sys.usb.config=rndis,acm,diag
     write /sys/class/android_usb/android0/f_acm/acm_transports tty
     write /sys/class/android_usb/android0/functions rndis,acm,diag
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
     
 on property:sys.usb.config=rmnet,acm,diag
     write /sys/class/android_usb/android0/enable 0
@@ -60,7 +60,7 @@ on property:sys.usb.config=rmnet,acm,diag
     write /sys/class/android_usb/android0/f_acm/acm_transports sdio
     write /sys/class/android_usb/android0/functions acm,diag,rmnet_sdio
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 # USB compositions
 on property:sys.usb.config=diag,adb
