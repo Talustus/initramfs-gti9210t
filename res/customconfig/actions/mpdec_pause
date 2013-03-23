@@ -1,0 +1,8 @@
+#!/sbin/busybox sh
+
+if [ "a${2}" != "a" ];then
+  mpdec_pause=${2}
+fi
+
+echo "${mpdec_pause}" > /sys/kernel/msm_mpdecision/conf/pause
+echo "${mpdec_pause}"

@@ -1,0 +1,8 @@
+#!/sbin/busybox sh
+
+if [ "a${2}" != "a" ];then
+  mpdec_idlefreq=${2}
+fi
+
+echo "${mpdec_idlefreq}" > /sys/kernel/msm_mpdecision/conf/idle_freq
+echo "${mpdec_idlefreq}"

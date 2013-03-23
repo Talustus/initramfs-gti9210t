@@ -1,0 +1,16 @@
+#!/sbin/busybox sh
+
+if [ "a${2}" != "a" ];then
+  mpdec_scroff=${2}
+fi
+
+case "${mpdec_scroff}" in
+  on)
+    echo "1" > /sys/kernel/msm_mpdecision/conf/scroff_single_core
+    ;;
+  off)
+    echo "0" > /sys/kernel/msm_mpdecision/conf/scroff_single_core
+    ;;
+esac;
+
+echo ${mpdec_scroff}

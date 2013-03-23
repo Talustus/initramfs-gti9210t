@@ -1,0 +1,16 @@
+#!/sbin/busybox sh
+
+if [ "a${2}" != "a" ];then
+  mpdec_enabled=${2}
+fi
+
+case "${mpdec_enabled}" in
+  on)
+    echo "1" > /sys/kernel/msm_mpdecision/conf/enabled
+    ;;
+  off)
+    echo "0" > /sys/kernel/msm_mpdecision/conf/enabled
+    ;;
+esac;
+
+echo ${mpdec_enabled}

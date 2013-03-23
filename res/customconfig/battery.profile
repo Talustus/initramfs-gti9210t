@@ -1,0 +1,14 @@
+mpdec_enabled=off
+mpdec_scroff=off
+mpdec_idlefreq=486000
+mpdec_delay=500
+mpdec_startdelay=70000
+mpdec_pause=10000
+scaling_governor=interactive
+scaling_min_freq=192000
+scaling_max_freq=1350000
+brightness=20
+touchkey_brightness=33
+scheduler=row
+power_reduce=on
+cpu_undervolting=25

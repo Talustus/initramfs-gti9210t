@@ -1,0 +1,8 @@
+#!/sbin/busybox sh
+
+if [ "a${2}" != "a" ];then
+  mpdec_startdelay=${2}
+fi
+
+echo "${mpdec_startdelay}" > /sys/kernel/msm_mpdecision/conf/startdelay
+echo "${mpdec_startdelay}"

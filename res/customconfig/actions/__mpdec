@@ -1,0 +1,43 @@
+#!/sbin/busybox sh
+#
+# Custom Script for In-Kernel MPDECISION Control
+
+if [ "a${3}" == "a" ];
+then
+  echo "Error: missing Argument ${2}"
+  exit
+fi
+
+mpdec_option="${2}"
+mpdec_value="${3}"
+
+case "${mpdec_option}" in
+  mpdec_enabled)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/enabled
+    echo "${mpdec_value}"
+    ;;
+  mpdec_idlefreq)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/idle_freq
+    echo "${mpdec_value}"
+    ;;
+  mpdec_delay)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/delay
+    echo "${mpdec_value}"
+    ;;
+  mpdec_startdelay)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/startdelay
+    echo "${mpdec_value}"
+    ;;
+  mpdec_pause)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/pause
+    echo "${mpdec_value}"
+    ;;
+  mpdec_scroff)
+    echo "${mpdec_value}" > /sys/kernel/msm_mpdecision/conf/scroff_single_core
+    echo "${mpdec_value}"
+    ;;
+  *)
+    echo "Invalid option: ${mpdec_option}"
+    exit
+    ;;
+esac;

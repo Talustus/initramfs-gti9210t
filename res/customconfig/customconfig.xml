@@ -1,0 +1,114 @@
+<settingsRoot>
+  <settingsTab name="CPU">
+    <settingsPane description="In Kernel MPDECISION Settings"
+		name="MPCDECISION Settings">
+
+      <checkbox description="Enable Kernel based Multi-Core Hotplug decision. (default: enabled)" name="Kernel Based MPDECISION" action="mpdec_enabled" label="enable in-kernel MPDECISION"/>
+
+      <checkbox description="Enable unpluging of 2nd Core when Screen goes off. (default: enabled)" name="2nd Core HotPluging based on Screen state" action="mpdec_scroff" label="Turn 2nd Core off when screen goes off."/>
+
+      <spinner description="MPDECISION will not UnPlug Core1 if current FREQ is above this value. (default: 486MHz)" name="mpdec_idlefreq" action="mpdec_idlefreq">
+		<spinnerItem name="486 MHz" value="486000"/>
+		<spinnerItem name="540 MHz" value="540000"/>
+		<spinnerItem name="594 MHz" value="594000"/>
+		<spinnerItem name="648 MHz" value="648000"/>
+		<spinnerItem name="702 MHz" value="702000"/>
+		<spinnerItem name="756 MHz" value="756000"/>
+		<spinnerItem name="810 MHz" value="810000"/>
+		<spinnerItem name="864 MHz" value="864000"/>
+		<spinnerItem name="918 MHz" value="918000"/>
+		<spinnerItem name="1026 MHz" value="1026000"/>
+      </spinner>
+
+      <seekBar description="Minimum delay for MPDECISION to wait before a new Hotplug decision is made after a previous one (default: 500ms)"
+		name="mpdec_delay" action="mpdec_delay" unit=" ms" min="500" reversed="false" step="100" max="2000"/>
+
+      <seekBar description="For some ROMs (e.g. Sense Ports) MPDECISION needs ahigher StartDelay. If u run into trouble with mpdec try to slightly increase this value otherwhise dont touch it! (default: 70000 ms)"
+		name="mpdec_startdelay" action="mpdec_startdelay" unit=" ms" min="50000" reversed="false" step="5000" max="100000"/>
+
+      <seekBar description="This sets the minimum delay for MPDECISION to wait if hotpluging was controled outside of MPDEC.  (default: 10000 ms)"
+		name="mpdec_pause" action="mpdec_pause" unit=" ms" min="5000" reversed="false" step="1000" max="15000"/>
+    </settingsPane>
+
+    <settingsPane description="CPU Step and Frequency Settings"
+		name="CPU Scaling Settings">
+
+      <spinner description="This will set the default CPU governor. Default CPU governor will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor">
+		<spinnerItem name="conservative" value="conservative"/>
+		<spinnerItem name="interactive" value="interactive"/>
+		<spinnerItem name="ondemand" value="ondemand"/>
+		<spinnerItem name="performance" value="performance"/>
+		<spinnerItem name="powersave" value="powersave"/>
+		<spinnerItem name="userspace" value="userspace"/>
+       </spinner>
+
+	<spinner description="This will set the MIN CPU Freq (default: 384 Mhz) " name="Scaling Min CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
+		<spinnerItem name="192 MHz" value="192000"/> 
+		<spinnerItem name="384 MHz" value="384000"/>
+		<spinnerItem name="432 MHz" value="432000"/> 
+		<spinnerItem name="486 MHz" value="486000"/>
+		<spinnerItem name="540 MHz" value="540000"/>
+		<spinnerItem name="594 MHz" value="594000"/>
+		<spinnerItem name="648 MHz" value="648000"/>
+		<spinnerItem name="702 MHz" value="702000"/>
+		<spinnerItem name="756 MHz" value="756000"/>
+		<spinnerItem name="810 MHz" value="810000"/>
+	</spinner>
+
+      <spinner description="This will set the MAX CPU Freq (1728000 Khz)" name="Scaling Max CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq">
+		<spinnerItem name="864 MHz" value="864000"/>
+		<spinnerItem name="918 MHz" value="918000"/> 
+		<spinnerItem name="972 MHz" value="972000"/> 
+		<spinnerItem name="1026 MHz" value="1026000"/>
+		<spinnerItem name="1080 MHz" value="1080000"/> 
+		<spinnerItem name="1134 MHz" value="1134000"/>
+		<spinnerItem name="1188 MHz" value="1188000"/>
+		<spinnerItem name="1242 MHz" value="1242000"/>
+		<spinnerItem name="1296 MHz" value="1296000"/>
+		<spinnerItem name="1350 MHz" value="1350000"/>
+		<spinnerItem name="1404 MHz" value="1404000"/>
+		<spinnerItem name="1458 MHz" value="1458000"/>
+		<spinnerItem name="1512 MHz" value="1512000"/>
+	</spinner>
+
+    </settingsPane>
+  </settingsTab>
+
+  <settingsTab name="Screen and Keys">
+    <settingsPane description="Screen and TouchKey Settings" name="ScreenAndKeySettings">
+
+      <seekBar description="Screen Brightness (default:125 min:20 max:255). You should not change this setting for now!"
+		name="TouchScreen Brightness" action="generic /sys/devices/platform/msm_fb.196609/leds/lcd-backlight/brightness" unit=" " min="20" reversed="false" step="5" max="255"/>
+
+      <seekBar description="Touchpad LED voltage level (default: 33mv min:25mv max: 33). You should not change this setting for now!"
+		name="Led Voltage Level" action="generic /sys/devices/virtual/sec/sec_touchkey/touchkey_brightness" unit=" mV" min="25" reversed="false" step="1" max="33"/>
+
+    </settingsPane>
+  </settingsTab>
+
+  <settingsTab name="Misc">
+    <settingsPane description="Misc Settings" name="Misc Settings">
+	<spinner description="This will set the default I/O scheduler. Default I/O scheduler will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default I/O Scheduler" action="generic /sys/block/mmcblk0/queue/scheduler">
+		<spinnerItem name="cfq" value="cfq"/>
+		<spinnerItem name="deadline" value="deadline"/>
+		<spinnerItem name="noop" value="noop"/>
+		<spinnerItem name="row" value="row"/>
+	</spinner>
+
+	<checkbox description="Enable LCD-Powersaving Mode" name="LCD-Powersaving Mode" action="generic01 /sys/class/lcd/panel/power_reduce" label="LCD-Powersaving Mode" />
+
+	<button description="If the fuel gauge chip is behaving weird use this button to reset it. Give it a few hours after you reset it. It may still show you funny values for those period, then the battery percentage should be fine." name="Reset Fuel-Gauge Chip" action="reset-fuelgauge" label="Reset Fuel-Gauge Chip"/>
+
+    </settingsPane>
+
+  </settingsTab>
+  <settingsTab name="Voltages">
+    <settingsPane description="CPU Voltage Settings" name="Voltage Settings">
+
+      <seekBar description="CPU Undervolting in mV (default: 0mv, max: 100mV). Be carefull while using this Setting!!"
+		name="cpu_undervolting" action="cpu_undervolting" unit=" mV" min="0" reversed="false" step="25" max="100"/>
+
+    </settingsPane>
+
+  </settingsTab>
+</settingsRoot>
