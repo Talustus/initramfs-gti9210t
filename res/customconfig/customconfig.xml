@@ -34,12 +34,18 @@
 		name="CPU Scaling Settings">
 
       <spinner description="This will set the default CPU governor. Default CPU governor will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor">
+		<!-- <spinnerItem name="abyssplug" value="abyssplug"/> -->
+		<spinnerItem name="badass" value="badass"/>
 		<spinnerItem name="conservative" value="conservative"/>
+		<spinnerItem name="intellidemand" value="intellidemand"/>
 		<spinnerItem name="interactive" value="interactive"/>
+		<spinnerItem name="lionheart" value="lionheart"/>
 		<spinnerItem name="ondemand" value="ondemand"/>
 		<spinnerItem name="performance" value="performance"/>
 		<spinnerItem name="powersave" value="powersave"/>
+		<spinnerItem name="smartass2" value="smartass2"/>
 		<spinnerItem name="userspace" value="userspace"/>
+		<spinnerItem name="wheatley" value="wheatley"/>
        </spinner>
 
 	<spinner description="This will set the MIN CPU Freq (default: 384 Mhz) " name="Scaling Min CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
@@ -93,8 +99,13 @@
 		<spinnerItem name="deadline" value="deadline"/>
 		<spinnerItem name="noop" value="noop"/>
 		<spinnerItem name="row" value="row"/>
+		<spinnerItem name="sio" value="sio"/>
+		<spinnerItem name="vr" value="vr"/>
 	</spinner>
-
+	<!--
+	<checkbox description="Enable USB Fast Charging Mode" name="USB Fast Charging Mode" 
+		action="generic01 /sys/kernel/fast_charge/force_fast_charge" label="USB-FastCharging Mode" />
+	-->
 	<checkbox description="Enable LCD-Powersaving Mode" name="LCD-Powersaving Mode" action="generic01 /sys/class/lcd/panel/power_reduce" label="LCD-Powersaving Mode" />
 
 	<button description="If the fuel gauge chip is behaving weird use this button to reset it. Give it a few hours after you reset it. It may still show you funny values for those period, then the battery percentage should be fine." name="Reset Fuel-Gauge Chip" action="reset-fuelgauge" label="Reset Fuel-Gauge Chip"/>
