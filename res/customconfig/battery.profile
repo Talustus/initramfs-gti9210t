@@ -12,3 +12,4 @@ touchkey_brightness=33
 scheduler=row
 power_reduce=on
 cpu_undervolting=25
+force_fast_charge=on

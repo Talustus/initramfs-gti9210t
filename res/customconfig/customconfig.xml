@@ -102,10 +102,9 @@
 		<spinnerItem name="sio" value="sio"/>
 		<spinnerItem name="vr" value="vr"/>
 	</spinner>
-	<!--
-	<checkbox description="Enable USB Fast Charging Mode" name="USB Fast Charging Mode" 
-		action="generic01 /sys/kernel/fast_charge/force_fast_charge" label="USB-FastCharging Mode" />
-	-->
+
+	<checkbox description="Enable USB Fast Charging Mode" name="USB Fast Charging Mode" action="generic01 /sys/kernel/fast_charge/force_fast_charge" label="USB-FastCharging Mode" />
+
 	<checkbox description="Enable LCD-Powersaving Mode" name="LCD-Powersaving Mode" action="generic01 /sys/class/lcd/panel/power_reduce" label="LCD-Powersaving Mode" />
 
 	<button description="If the fuel gauge chip is behaving weird use this button to reset it. Give it a few hours after you reset it. It may still show you funny values for those period, then the battery percentage should be fine." name="Reset Fuel-Gauge Chip" action="reset-fuelgauge" label="Reset Fuel-Gauge Chip"/>
