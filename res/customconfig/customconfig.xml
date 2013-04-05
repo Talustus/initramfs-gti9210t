@@ -1,5 +1,63 @@
 <settingsRoot>
   <settingsTab name="CPU">
+
+    <settingsPane description="CPU Step and Frequency Settings"
+		name="CPU Scaling Settings">
+
+      <spinner description="This will set the default CPU governor. Default CPU governor will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor">
+		<!-- <spinnerItem name="abyssplug" value="abyssplug"/> -->
+		<spinnerItem name="badass" value="badass"/>
+		<spinnerItem name="conservative" value="conservative"/>
+		<spinnerItem name="intellidemand" value="intellidemand"/>
+		<spinnerItem name="interactive" value="interactive"/>
+		<spinnerItem name="lionheart" value="lionheart"/>
+		<spinnerItem name="ondemand" value="ondemand"/>
+		<spinnerItem name="performance" value="performance"/>
+		<spinnerItem name="powersave" value="powersave"/>
+		<spinnerItem name="smartass2" value="smartass2"/>
+		<spinnerItem name="userspace" value="userspace"/>
+		<spinnerItem name="wheatley" value="wheatley"/>
+       </spinner>
+
+	<checkbox description="Force Sync of Governors settings between cpu0 and cpu1 (default: enabled)" name="Link CPU Governors" action="generic01 /sys/kernel/cpu_gov_sync/force_cpu_gov_sync " label="Link CPU Governors" />
+
+	<spinner description="This will set the MIN CPU Freq (default: 384 Mhz, min: 192 Mhz) " name="Scaling Min CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
+		<spinnerItem name="192 MHz" value="192000"/> 
+		<spinnerItem name="384 MHz" value="384000"/>
+		<spinnerItem name="432 MHz" value="432000"/> 
+		<spinnerItem name="486 MHz" value="486000"/>
+		<spinnerItem name="540 MHz" value="540000"/>
+		<spinnerItem name="594 MHz" value="594000"/>
+		<spinnerItem name="648 MHz" value="648000"/>
+		<spinnerItem name="702 MHz" value="702000"/>
+		<spinnerItem name="756 MHz" value="756000"/>
+		<spinnerItem name="810 MHz" value="810000"/>
+	</spinner>
+
+      <spinner description="This will set the MAX CPU Freq (default: 1512 Mhz, max: 1836 Mhz) " name="Scaling Max CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq">
+		<spinnerItem name="864 MHz" value="864000"/>
+		<spinnerItem name="918 MHz" value="918000"/> 
+		<spinnerItem name="972 MHz" value="972000"/> 
+		<spinnerItem name="1026 MHz" value="1026000"/>
+		<spinnerItem name="1080 MHz" value="1080000"/> 
+		<spinnerItem name="1134 MHz" value="1134000"/>
+		<spinnerItem name="1188 MHz" value="1188000"/>
+		<spinnerItem name="1242 MHz" value="1242000"/>
+		<spinnerItem name="1296 MHz" value="1296000"/>
+		<spinnerItem name="1350 MHz" value="1350000"/>
+		<spinnerItem name="1404 MHz" value="1404000"/>
+		<spinnerItem name="1458 MHz" value="1458000"/>
+		<spinnerItem name="1512 MHz" value="1512000"/>
+		<spinnerItem name="1566 MHz" value="1566000"/>
+		<spinnerItem name="1620 MHz" value="1620000"/>
+		<spinnerItem name="1674 MHz" value="1674000"/>
+		<spinnerItem name="1728 MHz" value="1728000"/>
+		<spinnerItem name="1782 MHz" value="1782000"/>
+		<spinnerItem name="1836 MHz" value="1836000"/>
+	</spinner>
+
+    </settingsPane>
+
     <settingsPane description="In Kernel MPDECISION Settings"
 		name="MPCDECISION Settings">
 
@@ -28,62 +86,25 @@
 
       <seekBar description="This sets the minimum delay for MPDECISION to wait if hotpluging was controled outside of MPDEC.  (default: 10000 ms)"
 		name="mpdec_pause" action="mpdec_pause" unit=" ms" min="5000" reversed="false" step="1000" max="15000"/>
-    </settingsPane>
 
-    <settingsPane description="CPU Step and Frequency Settings"
-		name="CPU Scaling Settings">
-
-      <spinner description="This will set the default CPU governor. Default CPU governor will only be set during early stages of booting (before init.d execution) and can be overriden by later scripts or apps." name="Default CPU Governor" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor">
-		<!-- <spinnerItem name="abyssplug" value="abyssplug"/> -->
-		<spinnerItem name="badass" value="badass"/>
-		<spinnerItem name="conservative" value="conservative"/>
-		<spinnerItem name="intellidemand" value="intellidemand"/>
-		<spinnerItem name="interactive" value="interactive"/>
-		<spinnerItem name="lionheart" value="lionheart"/>
-		<spinnerItem name="ondemand" value="ondemand"/>
-		<spinnerItem name="performance" value="performance"/>
-		<spinnerItem name="powersave" value="powersave"/>
-		<spinnerItem name="smartass2" value="smartass2"/>
-		<spinnerItem name="userspace" value="userspace"/>
-		<spinnerItem name="wheatley" value="wheatley"/>
-       </spinner>
-
-	<spinner description="This will set the MIN CPU Freq (default: 384 Mhz) " name="Scaling Min CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq">
-		<spinnerItem name="192 MHz" value="192000"/> 
-		<spinnerItem name="384 MHz" value="384000"/>
-		<spinnerItem name="432 MHz" value="432000"/> 
-		<spinnerItem name="486 MHz" value="486000"/>
-		<spinnerItem name="540 MHz" value="540000"/>
-		<spinnerItem name="594 MHz" value="594000"/>
-		<spinnerItem name="648 MHz" value="648000"/>
-		<spinnerItem name="702 MHz" value="702000"/>
-		<spinnerItem name="756 MHz" value="756000"/>
-		<spinnerItem name="810 MHz" value="810000"/>
+	<spinner description="This sets the MIN Number of cpus used for MPDEC (default: 1 Core0 only, 2 is core0 and 1, core1 always on?!)" name="MPDEC MIN CPUS" action="generic /sys/kernel/msm_mpdecision/conf/min_cpus">
+		<spinnerItem name="1" value="1"/>
+		<spinnerItem name="2" value="2"/>
 	</spinner>
 
-      <spinner description="This will set the MAX CPU Freq (1728000 Khz)" name="Scaling Max CPUFreq" action="generic /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq">
-		<spinnerItem name="864 MHz" value="864000"/>
-		<spinnerItem name="918 MHz" value="918000"/> 
-		<spinnerItem name="972 MHz" value="972000"/> 
-		<spinnerItem name="1026 MHz" value="1026000"/>
-		<spinnerItem name="1080 MHz" value="1080000"/> 
-		<spinnerItem name="1134 MHz" value="1134000"/>
-		<spinnerItem name="1188 MHz" value="1188000"/>
-		<spinnerItem name="1242 MHz" value="1242000"/>
-		<spinnerItem name="1296 MHz" value="1296000"/>
-		<spinnerItem name="1350 MHz" value="1350000"/>
-		<spinnerItem name="1404 MHz" value="1404000"/>
-		<spinnerItem name="1458 MHz" value="1458000"/>
-		<spinnerItem name="1512 MHz" value="1512000"/>
+	<spinner description="This sets the MAX Number of cpus used for MPDEC (default: 2 Core0 and Core1, 1 is core 0 Only!" name="MPDEC MAX CPUS" action="generic /sys/kernel/msm_mpdecision/conf/max_cpus">
+		<spinnerItem name="1" value="1"/>
+		<spinnerItem name="2" value="2"/>
 	</spinner>
 
     </settingsPane>
+
   </settingsTab>
 
   <settingsTab name="Screen and Keys">
     <settingsPane description="Screen and TouchKey Settings" name="ScreenAndKeySettings">
 
-      <seekBar description="Screen Brightness (default:125 min:20 max:255). You should not change this setting for now!"
+      <seekBar description="Screen Brightness (default:125 min:20 max:255). Sets the defult Screen Brightness"
 		name="TouchScreen Brightness" action="generic /sys/devices/platform/msm_fb.196609/leds/lcd-backlight/brightness" unit=" " min="20" reversed="false" step="5" max="255"/>
 
       <seekBar description="Touchpad LED voltage level (default: 33mv min:25mv max: 33). You should not change this setting for now!"
