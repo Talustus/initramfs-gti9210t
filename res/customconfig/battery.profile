@@ -2,6 +2,7 @@ scaling_governor=interactive
 force_cpu_gov_sync=on
 scaling_min_freq=192000
 scaling_max_freq=1350000
+sched_mc_power_savings=1
 mpdec_enabled=off
 mpdec_scroff=off
 mpdec_idlefreq=486000

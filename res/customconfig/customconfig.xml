@@ -8,7 +8,7 @@
 		<!-- <spinnerItem name="abyssplug" value="abyssplug"/> -->
 		<spinnerItem name="badass" value="badass"/>
 		<spinnerItem name="conservative" value="conservative"/>
-		<spinnerItem name="hotplug" value="hotplug"/>
+		<!-- <spinnerItem name="hotplug" value="hotplug"/> -->
 		<spinnerItem name="intellidemand" value="intellidemand"/>
 		<spinnerItem name="interactive" value="interactive"/>
 		<spinnerItem name="lionheart" value="lionheart"/>
@@ -56,6 +56,9 @@
 		<spinnerItem name="1782 MHz" value="1782000"/>
 		<spinnerItem name="1836 MHz" value="1836000"/>
 	</spinner>
+
+	<seekBar description="Sets the sched_mc value which changes the cpu scheduler behaviour for multi-cpu systems. 0 is Samsung kernel's default value which turns sched_mc off. Setting it to 1 means that the first core will be tried to be loaded more and setting it to 2 will bias task wake-ups to semi-idle cpu package for power savings. (default: 0)"
+		name="sched_mc" action="generic /sys/devices/system/cpu/sched_mc_power_savings" unit="" min="0" reversed="false" step="1" max="2"/>
 
     </settingsPane>
 
