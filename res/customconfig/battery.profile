@@ -17,3 +17,4 @@ scheduler=row
 power_reduce=on
 cpu_undervolting=25
 force_fast_charge=on
+max_3d_gpuclk=266667000

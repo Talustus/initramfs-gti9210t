@@ -105,6 +105,26 @@
 
   </settingsTab>
 
+  <settingsTab name="GPU">
+    <settingsPane description="GPU Frequencies" name="GPU Frequencies">
+
+	<spinner description="This will set the maximal GPU frequency used for 3D calculations (Default: 300, MAX: 320 MHz)" name="Max 3D GPU Frequency" action="max_3d_gpuclk">
+		<spinnerItem name="320 MHz" value="320000000"/>
+		<spinnerItem name="300 MHz" value="300000000"/>
+		<spinnerItem name="266 MHz" value="266667000"/>
+		<spinnerItem name="228 MHz" value="228571000"/>
+		<spinnerItem name="200 MHz" value="200000000"/>
+		<spinnerItem name="177 MHz" value="177778000"/>
+		<spinnerItem name="27 MHz" value="27000000"/>
+	</spinner>
+
+	<!--
+		2D GPU Freq Control not implemented yet ...
+	-->
+
+    </settingsPane>
+  </settingsTab>
+
   <settingsTab name="Screen and Keys">
     <settingsPane description="Screen and TouchKey Settings" name="ScreenAndKeySettings">
 
