@@ -634,7 +634,7 @@ service mdnsd /system/bin/mdnsd
     oneshot
 
 # kernel Specific installer/scripts
-#service postinit /sbin/ext/post-init.sh
-#    class core
-#    user root
-#    oneshot
+service postinit /sbin/ext/post-init.sh
+    class core
+    user root
+    oneshot
