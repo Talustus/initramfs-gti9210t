@@ -9,6 +9,7 @@
 /fstab\..*		u:object_r:rootfs:s0
 /init\..*		u:object_r:rootfs:s0
 /res(/.*)?		u:object_r:rootfs:s0
+/lib/(.*)?		u:object_r:rootfs:s0
 /ueventd\..*		u:object_r:rootfs:s0
 
 # Executables
@@ -22,9 +23,9 @@
 /sys			u:object_r:rootfs:s0
 
 # SELinux policy files
-/file_contexts		u:object_r:rootfs:s0
+/file_contexts	u:object_r:rootfs:s0
 /property_contexts	u:object_r:rootfs:s0
-/seapp_contexts		u:object_r:rootfs:s0
+/seapp_contexts	u:object_r:rootfs:s0
 /sepolicy		u:object_r:rootfs:s0
 
 ##########################
@@ -149,6 +150,7 @@
 # Data files
 #
 /data(/.*)?		u:object_r:system_data_file:s0
+/data/.dream/(.*)?		u:object_r:system_data_file:s0
 /data/backup(/.*)?		u:object_r:backup_data_file:s0
 /data/secure/backup(/.*)?	u:object_r:backup_data_file:s0
 /data/security(/.*)?	u:object_r:security_file:s0
