@@ -61,6 +61,7 @@ on fs
     symlink /lib/modules/tsif_chrdev.ko /system/lib/modules/tsif_chrdev.ko 
     symlink /lib/modules/vibrator.ko /system/lib/modules/vibrator.ko
     # symlink /lib/modules/vibrator.ko /system/lib/modules/exfat.ko
+    mount ext4 /dev/block/mmcblk0p24 /system remount ro
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -409,14 +410,14 @@ service dcvsd1 /system/bin/dcvsd -c 1 -f /data/misc/dcvsd/dcvsd1.conf
 #    user root
 #    disabled
 
-service thermald /system/bin/thermald
-    class main
-    user root
-    group root
-    disabled
+#service thermald /system/bin/thermald
+#    class main
+#    user root
+#    group root
+#    disabled
 
-on property.ro.modem.links.done=1
-    start thermald
+#on property.ro.modem.links.done=1
+#    start thermald
 
 # qrngd will drop permissions after startup
 service qrngd /system/bin/qrngd -f

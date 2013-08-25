@@ -2,7 +2,7 @@
 #
 
 # Remount FileSys RW
-/sbin/busybox mount -t rootfs -o remount,rw rootfs
+# /sbin/busybox mount -t rootfs -o remount,rw rootfs
 
 ## Create the kernel data directory
 if [ ! -d /data/.dream ];
@@ -30,6 +30,6 @@ echo "*** Post-Init not implemented yet ***"
 #)&
 
 # Remount FileSys RO
-/sbin/busybox mount -t rootfs -o remount,ro rootfs
+# /sbin/busybox mount -t rootfs -o remount,ro rootfs
 
 echo "Post-init finished ..."
